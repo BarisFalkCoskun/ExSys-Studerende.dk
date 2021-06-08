@@ -1,0 +1,6 @@
+Before you can run the Haskell script you need to chmod the script, the shell script and the calendar files.
+Otherwise, it will not work!
+
+Run this
+cd server
+sudo chmod 777 da1.ics da2.ics runMergeCal.sh mergeCal.hs empty.ics
