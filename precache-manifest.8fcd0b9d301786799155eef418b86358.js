@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e8d52da12106aaeae543f6b4c7c0ae06",
+    "revision": "befd6ba7ea8015d4cc51da618b672d3d",
     "url": "/ExSys-Studerende.dk/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ExSys-Studerende.dk/static/css/2.e5852988.chunk.css"
   },
   {
-    "revision": "e46ae3a0f029454eeeb7",
+    "revision": "445f52e74fe88a8a6ef7",
     "url": "/ExSys-Studerende.dk/static/css/main.0bf64b73.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ExSys-Studerende.dk/static/js/2.ef013dd4.chunk.js"
   },
   {
-    "revision": "e46ae3a0f029454eeeb7",
-    "url": "/ExSys-Studerende.dk/static/js/main.c354eca4.chunk.js"
+    "revision": "445f52e74fe88a8a6ef7",
+    "url": "/ExSys-Studerende.dk/static/js/main.96ba0ac6.chunk.js"
   },
   {
     "revision": "ffbe4c967005915aee7e",
