@@ -5,7 +5,6 @@
 
 -- By Rasmus Kirk
 -- https://rasmuskirk.com/
-
 -- Haskell program to merge iCalendar files and export them to html. Usage: scriptname ical-file1 ical-file2 > outputfile.html
 
 import Prelude
