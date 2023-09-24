@@ -12,15 +12,17 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
     - name: Install Nix
       uses: cachix/install-nix-action@v13
       with:
         nix_path: nixpkgs=channel:nixos-21.05
 
-    - name: Prepare environment and Compile Haskell Script
-      run: |
-        nix-shell server/mergeCal.hs --run "ghc -o mergeCal server/mergeCal.hs"
+    - name: Compile Haskell script
+      run: nix-shell --run "ghc -o mergeCal server/mergeCal.hs"
+
+    - name: Run compiled script with arguments
+      run: ./mergeCal ./da1.ics ./da2.ics > index.html
