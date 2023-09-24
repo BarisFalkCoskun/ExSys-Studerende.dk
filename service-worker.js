@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/ExSys-Studerende.dk/precache-manifest.0a5c2bb156e27aa962174400f0e28ab1.js"
+  "/ExSys-Studerende.dk/precache-manifest.40476772d13cf7fe7670786e1a0e367b.js"
 );
 
 self.addEventListener('message', (event) => {
