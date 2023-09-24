@@ -22,7 +22,7 @@ jobs:
         nix_path: nixpkgs=channel:nixos-21.05
 
     - name: Compile Haskell script
-      run: nix-shell --run "ghc -o mergeCal server/mergeCal.hs"
+      run: nix-shell -p "haskellPackages.ghcWithPackages (pkgs: [ pkgs.blaze-html pkgs.split pkgs.regex-tdfa pkgs.iso8601-time])" --run "ghc -o mergeCal server/mergeCal.hs"
 
     - name: Run compiled script with arguments
       run: ./mergeCal ./da1.ics ./da2.ics > index.html
