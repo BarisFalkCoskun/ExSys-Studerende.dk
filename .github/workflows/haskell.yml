@@ -11,26 +11,22 @@ permissions:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+    - uses: actions/checkout@v2
 
     - name: Install Nix
       uses: cachix/install-nix-action@v13
       with:
         nix_path: nixpkgs=channel:nixos-21.05
 
-    - name: Setup Haskell environment using Nix
-      run: nix-shell server/mergeCal.hs --command "echo Haskell environment setup"
+    - name: Prepare environment
+      run: |
+        . /home/runner/.nix-profile/etc/profile.d/nix.sh
+        nix-shell --run "ghc --version"
 
-    - name: Compile Haskell script
-      run: nix-shell server/mergeCal.hs --command "ghc -o mergeCal-exe server/mergeCal.hs"
-
-    - name: Upload compiled executable
-      uses: actions/upload-artifact@v2
-      with:
-        name: mergeCal-exe
-        path: ./mergeCal-exe
+    - name: Compile Haskell Script
+      run: |
+        . /home/runner/.nix-profile/etc/profile.d/nix.sh
+        nix-shell --run "ghc -o mergeCal server/mergeCal.hs"
