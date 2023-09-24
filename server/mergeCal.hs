@@ -61,6 +61,8 @@ main = do
       weekDates = getWeekDates (weekRange "20210516T075231Z" zt) cal3
       --weekDates = getWeekDates (weekRange (utctimeToISO8601 now) zt) cal3
     putStr (renderHtml (createSchema cal3 weekDates))
+  else
+    error "Program must have 1 or 2 arguments."
 
 createSchema :: ParsedCal -> WeekDates -> H.Html
 createSchema cal weekDates = docTypeHtml $ do
