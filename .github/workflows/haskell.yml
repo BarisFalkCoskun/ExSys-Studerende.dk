@@ -1,29 +1,20 @@
-name: Haskell-Nix CI
+name: Run Nix Shell
 
-on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
-
-permissions:
-  contents: read
+on: [push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
     - name: Install Nix
-      run: |
-        sh <(curl -L https://nixos.org/nix/install) --daemon
+      uses: cachix/install-nix-action@v14
+      with:
+        # Optional: Enable Nix sandboxing, which is turned off by default
+        # extra_nix_config: sandbox = true
 
-    - name: Build and run using Nix
-      run: |
-        . /home/runner/.nix-profile/etc/profile.d/nix.sh && nix-shell server/mergeCal.hs
-
-    - name: Run the script (if required)
-      run: |
-        . /home/runner/.nix-profile/etc/profile.d/nix.sh && ./server/mergeCal.hs
+    - name: Run nix-shell on mergeCal.hs
+      run: nix-shell server/mergeCal.hs
