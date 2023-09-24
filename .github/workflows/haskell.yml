@@ -27,7 +27,7 @@ jobs:
       run: nix-shell server/mergeCal.hs server/da1.ics server/da2.ics > server/index.html --command "echo Haskell environment setup"
 
     - name: Compile Haskell script
-      run: nix-shell server/mergeCal.hs server/da1.ics server/da2.ics > server/index.html --command "ghc -o mergeCal-exe server/mergeCal.hs"
+      run: nix-shell server/mergeCal.hs server/da1.ics server/da2.ics > server/index.html --command "ghc -o mergeCal-exe server/mergeCal.hs server/da1.ics server/da2.ics > server/index.html"
 
     - name: Upload compiled executable
       uses: actions/upload-artifact@v2
