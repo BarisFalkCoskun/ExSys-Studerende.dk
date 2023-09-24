@@ -12,9 +12,6 @@ jobs:
 
     - name: Install Nix
       uses: cachix/install-nix-action@v14
-      with:
-        # Optional: Enable Nix sandboxing, which is turned off by default
-        # extra_nix_config: sandbox = true
 
     - name: Run nix-shell on mergeCal.hs
       run: nix-shell server/mergeCal.hs
