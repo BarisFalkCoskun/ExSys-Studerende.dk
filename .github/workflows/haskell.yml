@@ -1,19 +1,36 @@
-name: Run Nix Shell
+name: Haskell CI
 
-on: [push]
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+permissions:
+  contents: read
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v3
 
     - name: Install Nix
       uses: cachix/install-nix-action@v13
       with:
         nix_path: nixpkgs=channel:nixos-21.05
 
-    - name: Run nix-shell on mergeCal.hs
-      run: nix-shell server/mergeCal.hs
+    - name: Setup Haskell environment using Nix
+      run: nix-shell server/mergeCal.hs --command "echo Haskell environment setup"
+
+    - name: Compile Haskell script
+      run: nix-shell server/mergeCal.hs --command "ghc -o mergeCal-exe server/mergeCal.hs"
+
+    - name: Upload compiled executable
+      uses: actions/upload-artifact@v2
+      with:
+        name: mergeCal-exe
+        path: ./mergeCal-exe
