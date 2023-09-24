@@ -23,4 +23,4 @@ jobs:
 
     - name: Prepare environment and Compile Haskell Script
       run: |
-        nix-shell --run "ghc -o mergeCal server/mergeCal.hs"
+        nix-shell server/mergeCal.hs --run "ghc -o mergeCal server/mergeCal.hs"
